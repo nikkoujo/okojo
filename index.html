@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta name="google-site-verification" content="<meta name="google-site-verification" content="5LF4DLCnP_pH0itDwoI3dBuL6Q9TKas15kQEDc7claQ" />" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>オコジョさん｜日本更生保護女性連盟 公式キャラクター</title>
@@ -1621,7 +1620,6 @@ function closeGoodsOutside(e){
           <div class="diary-thumb-placeholder">写真をここに</div>
         </div>
         <div class="diary-body">
-          <div class="diary-date">2026年７月28日</div>
           <div class="diary-title">ゆるばーす2026にエントリーしています！</div>
           <div class="diary-excerpt">ゆるバース2026（旧：ゆるキャラグランプリ）に初エントリーしています！</div>
           <span class="diary-readmore">続きを読む →</span>
@@ -1630,26 +1628,12 @@ function closeGoodsOutside(e){
 
       <div class="diary-card" onclick="openDiary(1)">
         <div class="diary-thumb">
-          <div class="diary-tag">活動報告</div>
+          <div class="diary-tag">お知らせ</div>
           <div class="diary-thumb-placeholder">写真をここに</div>
         </div>
         <div class="diary-body">
-          <div class="diary-date">2026年6月9日</div>
-          <div class="diary-title">更生保護女性連盟の集いに出席しました</div>
-          <div class="diary-excerpt">更生保護女性連盟の集いに出席しました。全国の皆さんとお会いできてうれしかったです！</div>
-          <span class="diary-readmore">続きを読む →</span>
-        </div>
-      </div>
-
-      <div class="diary-card" onclick="openDiary(2)">
-        <div class="diary-thumb">
-          <div class="diary-tag">活動報告</div>
-          <div class="diary-thumb-placeholder">写真をここに</div>
-        </div>
-        <div class="diary-body">
-          <div class="diary-date">2026年6月8日</div>
-          <div class="diary-title">日本更生保護女性連盟社員総会に出席しました</div>
-          <div class="diary-excerpt">社員総会にオコジョさんも出席しました！みんなで力を合わせてがんばります。</div>
+          <div class="diary-title">オコジョさん公式HPを開設しました！</div>
+          <div class="diary-excerpt">このたび、オコジョさんのホームページがオープンしました！</div>
           <span class="diary-readmore">続きを読む →</span>
         </div>
       </div>
@@ -1702,26 +1686,18 @@ const diaryData = [
   {
     tag: "イベント",
     title: "ゆるばーす2026にエントリーしています！",
-    date: "2026年７月28日",
+    date: "",
     thumb: "yuru2026pr.png",
     img: "yuru2026pr.png",
     body: "<p>オコジョさんが「ゆるばーす2026（旧：ゆるキャラグランプリ）」に初エントリーしています！</p><p>是非オコジョさんに投票をしてください！</p><p>みなさんの一票が大きな力になります。応援よろしくお願いいたします！！🐾</p>"
   },
   {
-    tag: "活動報告",
-    title: "更生保護女性連盟の集いに出席しました",
-    date: "2026年6月9日",
-    thumb: "",
-    img: "",
-    body: "<p>更生保護女性連盟の集いに出席しました。</p><p>全国各地から集まった皆さんとお会いできて、オコジョさんもとってもうれしかったです！</p>"
-  },
-  {
-    tag: "活動報告",
-    title: "日本更生保護女性連盟社員総会に出席しました",
-    date: "2026年6月8日",
-    thumb: "",
-    img: "",
-    body: "<p>日本更生保護女性連盟社員総会にオコジョさんも出席しました！</p><p>みんなで力を合わせて、これからもっともっと盛り上げていきます🌸</p>"
+    tag: "お知らせ",
+    title: "オコジョさん公式HPを開設しました！",
+    date: "",
+    thumb: "HPcard.png",
+    img: "HPcard.png",
+    body: "<p>このたび、オコジョさんのホームページがオープンしました！</p><p>ホームページでは、<br>🌸 オコジョさんのプロフィール<br>🌸 活動のようす<br>🌸 イベントやお知らせ<br>🌸 グッズの情報　など、<br>オコジョさんのことをもっと知っていただける内容を掲載しています。</p><p>「オコジョさんってどんな子？」<br>「最近は何をしているの？」<br>そんな方にも楽しんでいただけるホームページを目指しています♪</p><p>これからも新しい情報を少しずつ更新していきますので、ぜひ遊びに来てくださいね！</p><p>これからもオコジョさんの応援をよろしくお願いします！</p>"
   }
 ];
 
@@ -1745,7 +1721,9 @@ function openDiary(i){
   const d = diaryData[i];
   document.getElementById('modalTag').textContent = d.tag;
   document.getElementById('modalTitle').textContent = d.title;
-  document.getElementById('modalDate').textContent = d.date;
+  const dateEl = document.getElementById('modalDate');
+  dateEl.textContent = d.date || '';
+  dateEl.style.display = d.date ? 'block' : 'none';
   document.getElementById('modalBody').innerHTML = d.body;
 
   /* 画像の表示/非表示 */
