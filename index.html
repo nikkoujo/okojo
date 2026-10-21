@@ -742,7 +742,7 @@
     <nav class="pc-nav">
       <ul>
         <li><a href="#okojyo" onclick="scrollTo_(event,'okojyo')">オコジョさん</a></li>
-        <li><a href="#yurubirth" onclick="scrollTo_(event,'yurubirth')">ゆるバース2026</a></li>
+
         <li><a href="#profile" onclick="scrollTo_(event,'profile')">プロフィール</a></li>
         <li><a href="#asobu" onclick="scrollTo_(event,'asobu')">あそんでみよう</a></li>
         <li><a href="#goods" onclick="scrollTo_(event,'goods')">グッズ</a></li>
@@ -767,7 +767,7 @@
   <nav class="drawer-nav">
     <ul>
       <li><a href="#okojyo" onclick="drawerScroll(event,'okojyo')"><span class="drawer-icon">🐾</span>オコジョさん</a></li>
-      <li><a href="#yurubirth" onclick="drawerScroll(event,'yurubirth')"><span class="drawer-icon">🏆</span>ゆるバース2026</a></li>
+
       <li><a href="#profile" onclick="drawerScroll(event,'profile')"><span class="drawer-icon">📋</span>プロフィール</a></li>
       <li><a href="#asobu" onclick="drawerScroll(event,'asobu')"><span class="drawer-icon">🎨</span>あそんでみよう</a></li>
       <li><a href="#goods" onclick="drawerScroll(event,'goods')"><span class="drawer-icon">🛍️</span>グッズ</a></li>
@@ -802,116 +802,7 @@
   </div>
 </section>
 
-<!-- ゆるバース投票バナー -->
-<section class="yurubirth-banner" id="yurubirth">
-  <div class="yurubirth-inner">
-    <div class="yurubirth-trophy">
-      <img src="2026rogo.png" alt="ゆるバース2026" style="width:180px; max-width:120%; display:block; filter:drop-shadow(0 4px 10px rgba(255,200,220,0.7));">
-    </div>
-    <div class="yurubirth-text">
-      <div class="yurubirth-title">ゆるバース2026に挑戦中！</div>
-      <p class="yurubirth-sub">オコジョさんを応援してね！<br>みんなの1票が、オコジョさんの力になります。</p>
-    </div>
-    <div class="yurubirth-action">
-      <div class="yurubirth-label">🗳️ 投票はこちら！</div>
-      <a href="https://yurugp.jp/characters/4563" target="_blank" rel="noopener" class="vote-btn">
-        オコジョさんに投票する
-      </a>
-      <p class="yurubirth-note">※投票期間中のみ有効</p>
-      <a href="voteguide.pdf" target="_blank" rel="noopener" class="vote-how">
-        ※投票方法はこちら
-      </a>
-    </div>
-  </div>
-</section>
-
 <style>
-/* ゆるバースバナー */
-.yurubirth-banner{
-  background: linear-gradient(135deg, #FF7CA0 0%, #FFD966 100%);
-  padding: 70px 24px;
-}
-.yurubirth-inner{
-  max-width: 1080px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-.yurubirth-trophy{
-  font-size: 5rem;
-  flex-shrink: 0;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
-}
-.yurubirth-text{
-  flex: 1 1 220px;
-  color: #fff;
-}
-.yurubirth-title{
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.15);
-}
-.yurubirth-sub{
-  font-size: 1.1rem;
-  line-height: 1.8;
-  opacity: 0.95;
-}
-.yurubirth-action{
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-.yurubirth-label{
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-.vote-btn{
-  display: inline-block;
-  background: #fff;
-  color: var(--pink-dark);
-  font-weight: 700;
-  font-size: 1.25rem;
-  padding: 18px 44px;
-  border-radius: 999px;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.2);
-  transition: transform .2s ease, box-shadow .2s ease;
-  text-align: center;
-}
-.vote-btn:hover{
-  transform: translateY(-4px);
-  box-shadow: 0 14px 36px rgba(0,0,0,0.25);
-}
-.yurubirth-note{
-  color: rgba(255,255,255,0.85);
-  font-size: 0.88rem;
-}
-.vote-how{
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 700;
-  text-decoration: none;
-  background: rgba(255,255,255,0.25);
-  padding: 8px 20px;
-  border-radius: 999px;
-  border: 2px solid rgba(255,255,255,0.7);
-  transition: background .2s, opacity .2s;
-}
-.vote-how:hover{ background: rgba(255,255,255,0.4); opacity: 1; }
-
-@media (max-width:640px){
-  .yurubirth-banner{ padding: 48px 20px; }
-  .yurubirth-inner{ flex-direction: column; text-align: center; }
-  .yurubirth-title{ font-size: 1.4rem; }
-  .yurubirth-action{ width: 100%; }
-  .vote-btn{ width: 100%; font-size: 1.05rem; padding: 16px 24px; }
-}
-
 /* ============ グッズセクション ============ */
 .goods{ background: var(--yellow); }
 .goods .section-title{ color: var(--brown); }
@@ -1621,6 +1512,18 @@ function closeGoodsOutside(e){
 
       <div class="diary-card" onclick="openDiary(0)">
         <div class="diary-thumb">
+          <div class="diary-tag">結果報告</div>
+          <div class="diary-thumb-placeholder">写真をここに</div>
+        </div>
+        <div class="diary-body">
+          <div class="diary-title">ゆるバース2026、応援ありがとうございました！</div>
+          <div class="diary-excerpt">ゆるバース2026の最終順位は46位でした！ たくさんの応援をありがとうございました♪</div>
+          <span class="diary-readmore">続きを読む →</span>
+        </div>
+      </div>
+
+      <div class="diary-card" onclick="openDiary(1)">
+        <div class="diary-thumb">
           <div class="diary-tag">イベント</div>
           <div class="diary-thumb-placeholder">写真をここに</div>
         </div>
@@ -1631,7 +1534,7 @@ function closeGoodsOutside(e){
         </div>
       </div>
 
-      <div class="diary-card" onclick="openDiary(1)">
+      <div class="diary-card" onclick="openDiary(2)">
         <div class="diary-thumb">
           <div class="diary-tag">お知らせ</div>
           <div class="diary-thumb-placeholder">写真をここに</div>
@@ -1688,6 +1591,14 @@ function closeGoodsOutside(e){
    画像がない場合は img: "" のままにしてください。
    カードのサムネイルは thumb: "" に画像ファイル名を入れてください。 */
 const diaryData = [
+  {
+    tag: "結果報告",
+    title: "ゆるバース2026、応援ありがとうございました！",
+    date: "2026.10.21",
+    thumb: "yuru2026result.png",
+    img: "yuru2026result.png",
+    body: "<p>みなさん、こんにちは！オコジョさんです🐾</p><p>初めて挑戦した「ゆるバース2026」が終了しました！</p><p>オコジョさんの最終順位は、46位でした！🎉</p><p>投票してくださったみなさん、応援してくださったみなさん、本当にありがとうございました！</p><p>初めての挑戦でドキドキしましたが、みなさんのあたたかい応援がとっても嬉しかったです♪</p><p>これからも更生保護女性会の活動をもっともっと盛り上げられるよう、元気いっぱい頑張ります！</p><p>これからもオコジョさんをよろしくお願いします🐾💕</p>"
+  },
   {
     tag: "イベント",
     title: "ゆるばーす2026にエントリーしています！",
