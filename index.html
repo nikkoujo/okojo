@@ -1530,7 +1530,21 @@ function closeGoodsOutside(e){
     <p class="section-sub">オコジョさんの最新情報をお届け！</p>
     <div class="diary-grid">
 
-      <div class="diary-card" onclick="openDiary(0)">
+      <!-- ★中央研修の記事：写真を使う場合は「chuokenshu.jpg」をこのHTMLと同じフォルダに置いてください -->
+      <div class="diary-card" onclick="openDiary(0)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openDiary(0);}">
+        <div class="diary-thumb">
+          <div class="diary-tag">活動報告</div>
+          <div class="diary-thumb-placeholder">📸 中央研修の写真<br>準備中</div>
+        </div>
+        <div class="diary-body">
+          <div class="diary-date">2026.10.22〜23｜アルカディア市ヶ谷</div>
+          <div class="diary-title">中央研修に出席してきたよ！</div>
+          <div class="diary-excerpt">10月22日・23日、アルカディア市ヶ谷で開催された中央研修に出席してきたよ！</div>
+          <span class="diary-readmore">続きを読む →</span>
+        </div>
+      </div>
+
+      <div class="diary-card" onclick="openDiary(1)">
         <div class="diary-thumb">
           <div class="diary-tag">結果報告</div>
           <div class="diary-thumb-placeholder">写真をここに</div>
@@ -1542,7 +1556,7 @@ function closeGoodsOutside(e){
         </div>
       </div>
 
-      <div class="diary-card" onclick="openDiary(1)">
+      <div class="diary-card" onclick="openDiary(2)">
         <div class="diary-thumb">
           <div class="diary-tag">イベント</div>
           <div class="diary-thumb-placeholder">写真をここに</div>
@@ -1554,7 +1568,7 @@ function closeGoodsOutside(e){
         </div>
       </div>
 
-      <div class="diary-card" onclick="openDiary(2)">
+      <div class="diary-card" onclick="openDiary(3)">
         <div class="diary-thumb">
           <div class="diary-tag">お知らせ</div>
           <div class="diary-thumb-placeholder">写真をここに</div>
@@ -1612,6 +1626,16 @@ function closeGoodsOutside(e){
    カードのサムネイルは thumb: "" に画像ファイル名を入れてください。 */
 const diaryData = [
   {
+    tag: "活動報告",
+    title: "中央研修に出席してきたよ！",
+    date: "2026.10.22〜23｜アルカディア市ヶ谷"
+    // 写真は「chuokenshu.jpg」という名前でHTMLと同じフォルダに置くだけで表示されます。
+    // 別の名前・形式なら、下の2か所を同じファイル名に変えてください。
+    thumb: "chuokenshu.jpg", // 活動日記一覧の写真
+    img: "chuokenshu.jpg",   // 記事を開いたときの写真
+    body: "<p>みなさん、こんにちは！オコジョさんです🐾</p><p>2026年10月22日（木）・23日（金）の2日間、アルカディア市ヶ谷で中央研修が開催されたよ！</p><p>オコジョさんも中央研修に出席してきました♪</p><p>これからも、みなさんと一緒に更生保護女性会の活動をもっともっと盛り上げていきたいな！</p><p>これからも応援よろしくお願いします！🌸</p>"
+  },
+  {
     tag: "結果報告",
     title: "ゆるバース2026、応援ありがとうございました！",
     date: "2026.10.21",
@@ -1644,11 +1668,15 @@ document.addEventListener('DOMContentLoaded', function(){
     if(diaryData[i] && diaryData[i].thumb){
       const thumb = card.querySelector('.diary-thumb');
       const placeholder = thumb.querySelector('.diary-thumb-placeholder');
-      if(placeholder) placeholder.remove();
       const img = document.createElement('img');
-      img.src = diaryData[i].thumb;
       img.alt = diaryData[i].title;
-      thumb.appendChild(img);
+      // 写真をまだ設置していない間はプレースホルダーを表示
+      img.onload = function(){
+        if(placeholder) placeholder.remove();
+        thumb.appendChild(img);
+      };
+      img.onerror = function(){ /* 写真未設置なら「準備中」のまま */ };
+      img.src = diaryData[i].thumb;
     }
   });
 });
@@ -1665,12 +1693,16 @@ function openDiary(i){
   /* 画像の表示/非表示 */
   const imgWrap = document.getElementById('modalImg');
   const imgEl = document.getElementById('modalImgEl');
+  imgWrap.style.display = 'none';
+  imgEl.onload = null;
+  imgEl.onerror = null;
   if(d.img){
-    imgEl.src = d.img;
     imgEl.alt = d.title;
-    imgWrap.style.display = 'block';
+    imgEl.onload = function(){ imgWrap.style.display = 'flex'; };
+    imgEl.onerror = function(){ imgWrap.style.display = 'none'; };
+    imgEl.src = d.img;
   } else {
-    imgWrap.style.display = 'none';
+    imgEl.removeAttribute('src');
   }
 
   document.getElementById('diaryModal').classList.add('open');
